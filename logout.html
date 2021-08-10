@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+
+    <title>IDN hotspot - Log out</title>
+
+    <link rel="icon" type="image/png" href="images/icons/idn.png"/>
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+    <script>
+        function openLogin() {
+        if (window.name != 'hotspot_logout') return true;
+        open('$(link-login)', '_blank', '');
+        window.close();
+        return false;
+        }
+    </script>
+
+    <style>
+        .bayang:hover{
+            background-color: #eaf1ff;
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: url("../images/idn-boarding-school.jpg") no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        .table thead tr th, .table tbody tr td {
+           border: none;
+        }
+        .gaya{
+            /* background-color: azure;  */
+
+            background: linear-gradient(90deg,#F6F8FD 29px,transparent 1%) center,linear-gradient(#F6F8FD 29px,transparent 1%) center,#bfc5d3;
+            background-size: 30px 30px;
+
+            padding: 40px; 
+            border-radius: 10px 10px 10px 10px;
+        }
+        span{
+            font-weight: 500;
+        }
+        .btn-primary{
+            background-color: #1647ad;
+            border-color: #1647ad;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="content align-items-center d-flex justify-content-center" style="margin: 90px;">
+
+            <div class="wrap gaya">
+
+                <h3>$(username) have just logged out!</h3> 
+
+                <table class="table mt-3">  
+                    <tbody>                    
+                        <tr class="bayang"><td>Username</td><td><span>$(username)</span></td></tr>
+                        <tr class="bayang"><td>IP address</td><td><span>$(ip)</span></td></tr>
+                        <tr class="bayang"><td>MAC address</td><td><span>$(mac)</span></td></tr>
+                        <tr class="bayang"><td>Session time</td><td><span>$(uptime)</span></td></tr>
+                        $(if session-time-left)
+                        <tr class="bayang"><td>Time left</td><td><span>$(session-time-left)</span></td></tr>
+                        $(endif)
+                        <tr class="bayang"><td>Bytes up / down</td><td><span>$(bytes-in-nice) / $(bytes-out-nice)</span></td></tr>
+                    </tbody>
+                </table>
+
+
+                <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                <input type="submit" class="btn  btn-primary" value="Log in">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
